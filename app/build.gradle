@@ -25,17 +25,19 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
-    testCompile 'junit:junit:4.12'
 
     // butter knife to bind views and resources
-    compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     // java jokes library
-    compile project (':javajokes')
+    compile project(':javajokes')
     // android display joke library
-    compile project (':displayJoke')
+    compile project(':displayJoke')
 
 
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
