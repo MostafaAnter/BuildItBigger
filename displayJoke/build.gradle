@@ -1,16 +1,17 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
+
     defaultConfig {
-        applicationId "com.mostafa_anter.builditbigger"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -28,14 +29,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
     testCompile 'junit:junit:4.12'
-
-    // butter knife to bind views and resources
-    compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    // java jokes library
-    compile project (':javajokes')
-    // android display joke library
-    compile project (':displayJoke')
-
-
 }
