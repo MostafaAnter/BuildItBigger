@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-
+// use this variable to check flavor type
+def flavor
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
@@ -18,6 +19,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/java/'
+        free.java.srcDirs += 'src/free/java/'
+        paid.java.srcDirs += 'src/paid/java/'
+    }
+    productFlavors{
+        free{
+            applicationId "com.mostafa_anter.builditbigger.free"
+            flavor == "free"
+        }
+        paid{
+            applicationId "com.mostafa_anter.builditbigger.paid"
+            flavor == "paid"
+        }
+    }
 }
 
 dependencies {
@@ -31,8 +47,6 @@ dependencies {
     compile project(':javajokes')
     // android display joke library
     compile project(':displayJoke')
-
-
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.jakewharton:butterknife:8.4.0'
@@ -40,4 +54,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
+
+    // just for free version
+    freeCompile 'com.google.firebase:firebase-ads:10.0.1'
 }
+if (flavor == "free") {
+    apply plugin: 'com.google.gms.google-services'
+}
+
